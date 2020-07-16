@@ -1,54 +1,57 @@
 //**** ARRAY METHODS ****
-let testArr = ['apple', 'pear', 'plum', 'watermelon', 'peanut', 'cucumber']; //тестовый массив для проверки методов
+const testArr = ["apple", "pear", "plum", "watermelon", "peanut", "cucumber"]; //тестовый массив для проверки методов
 
-//arr - дополнительный аргумент в методах, подставлять массив к которому применяется метод
-function customPop(arr) {
-  let deletedElem = arr[testArr.length-1]; //сохраняем последний элемент
-  testArr.length -= 1 //обрезаем массив на 1 элемент с конца
-  return deletedElem;
-};
+//array - дополнительный аргумент в методах, подставлять массив к которому применяется метод
+function customPop(array) {
+  const lastElement = array.length - 1
+  const deletedElement = array[lastElement]; //сохраняем последний элемент
+  testArr.length -= 1; //обрезаем массив на 1 элемент с конца
+  return deletedElement;
+}
 
-function customShift(arr) {
-  let deletedElem = arr[0]; //сохраняем первый элемент
-  for (let i = 0; i < arr.length; i++) { //присваиваем каждому элементу значение следующего
-    arr[i] = arr[i+1];
-  };
-  arr.length -= 1; //обрезаем массив на 1 элемент с конца
-  return deletedElem;
-};
+function customShift(array) {
+  const deletedElement = array[0]; //сохраняем первый элемент
+    for (let i = 0; i < array.length; i++) { //присваиваем каждому элементу значение следующего
+      array[i] = array[i + 1];
+    }
+  array.length -= 1; //обрезаем массив на 1 элемент с конца
+  return deletedElement;
+}
 
-function customPush(arr, ...arguments) {
-  let length = arr.length;
-  for (let i = 0; i < arguments.length; i++) {
-    arr[length + i] = arguments[i]; //создаем новые элементы в массиве arr со значениями из элементов arguments
-  }
-  return arr;
-};
+function customPush(array, ...arguments) {
+  const length = array.length;
+    for (let i = 0; i < arguments.length; i++) {
+      array[length + i] = arguments[i]; //создаем новые элементы в массиве array со значениями из элементов arguments
+    }
+  return array;
+}
 
-function customUnShift(arr, ...arguments) {
-  let arrLength = arr.length;
-  let newArr = [];
-  for (let i = 0; i < arguments.length; i++) { //создаем новый массив с нужным кол-вом пустых слотов
-    newArr[arrLength + i] = arguments[i];
-  };
-  for (let j = 0; j < arrLength; j++) { //заполняем пустые слоты нового массива элеметами из старого
-    newArr[j] = arr[j];
-  };
-  return newArr;
-};
+function customUnShift(array, ...arguments) {
+  const arrLength = array.length;
+  const newArray = [];
+    for (let i = 0; i < arguments.length; i++) {//создаем новый массив с нужным кол-вом пустых слотов
+      newArray[arrLength + i] = arguments[i];
+    }
+    for (let j = 0; j < arrLength; j++) {//заполняем пустые слоты нового массива элеметами из старого
+      newArray[j] = array[j];
+    }
+  return newArray;
+}
 
-function customSlice(arr, start, end) {
-  let newArr = [];
-  for (let i = 0; i < end-start; i++) {
-    newArr[i] = arr[start+i];
-  }
-  return newArr;
-};
+function customSlice(array, start, end) {
+  const newArray = [];
+  const newArrayLength = end - start
+    for (let i = 0; i < newArrayLength; i++) {
+      newArray[i] = array[start + i];
+    }
+  return newArray;
+}
 
-function customReverse(arr) {
-  let newArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    newArr[i] = arr[(arr.length - 1) - i];
-  };
-  return newArr;
-};
+function customReverse(array) {
+  const newArray = [];
+    for (let i = 0; i < array.length; i++) {
+      const arrayReverseElement = array.length - 1 - i;
+      newArray[i] = array[arrayReverseElement];
+    }
+  return newArray;
+}
